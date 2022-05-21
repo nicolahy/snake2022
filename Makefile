@@ -2,8 +2,6 @@ CC=gcc
 CFLAGS=-Wall -ansi
 LDLIBS =-lncurses
 OBJ=main.o functions_definitions.o
-COLOR_CYAN = /bin/echo -e "\x1b[36m\#\# $1\x1b[0m"
-
 
 all:
 	make snake
