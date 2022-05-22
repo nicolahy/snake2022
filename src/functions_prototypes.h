@@ -3,6 +3,7 @@
 
 /* game board */
 char**allocMatrixChars(unsigned int, unsigned int);
+Coordinates *allocTableCoordinates(unsigned int);
 void cleanPosition(char**, int, int);
 void clearScreen();
 void displayEndScreen(int score);
@@ -10,6 +11,7 @@ void displayGameBoard(char**, SnakeComplete*, Food*);
 void displayGameRules();
 void displayScore(int);
 void freeMatrixChars(char**, unsigned int);
+void freeTableCoordinates(Coordinates *table, unsigned int lines);
 int getRandomInt(int, int);
 void setDelay(unsigned int);
 void setGameBoardBorders(char**);

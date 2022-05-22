@@ -38,6 +38,17 @@ char **allocMatrixChars(unsigned int lines, unsigned int columns) {
 	return matrix;	
 }
 
+/* allocates memory for a struct Coordinates table of n elements */
+Coordinates *allocTableCoordinates(unsigned int elements) {
+	Coordinates *table = malloc(elements*sizeof(Coordinates));
+
+	if(table == NULL) {
+		fprintf(stderr,"[KO] Unable to allocate memory for table of struct Coordinates");
+		exit(EXIT_FAILURE);
+	}
+	return table;	
+}
+
 /* deletes a position based on coordinates */
 void cleanPosition(char **gameBoard, int x, int y) {
 	gameBoard[x][y] = EMPTY_SYMBOL;
@@ -123,6 +134,7 @@ void displayGameRules() {
 void displayScore(int score) {
 	printw("\nYou have won : %d dollar%c\n", score, score > 1 ? 's' : EMPTY_SYMBOL);
 }
+
 /* free the memory allocated for the characters matrix */
 void freeMatrixChars(char **matrix, unsigned int lines) {
 	if(matrix == NULL) {
@@ -142,6 +154,11 @@ void freeMatrixChars(char **matrix, unsigned int lines) {
 		}
 	}
 	free(matrix);
+}
+
+/* free the memory allocated for the struct Coordinates table */
+void freeTableCoordinates(Coordinates *table, unsigned int lines) {
+	free(table);
 }
 
 /* generates random number in range [lower, upper] */

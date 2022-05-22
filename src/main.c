@@ -37,6 +37,7 @@ int main(int argc,char *argv[]) {
 	mySnake.head.previousX = SNAKE_START_X;
 	mySnake.head.previousY = SNAKE_START_Y;
 	mySnake.head.symbol = SNAKE_SYMBOL_HEAD;
+	mySnake.body = allocTableCoordinates(SNAKE_MAXLENGTH_BODY);
 
 	/* initialize food */
 	Food food;
@@ -71,10 +72,15 @@ int main(int argc,char *argv[]) {
 		setDelay(speed);
 	}
 
+	/* free memory allocated dynamically */
+	freeMatrixChars(gameBoard, LINES);
+	freeTableCoordinates(mySnake.body, SNAKE_MAXLENGTH_BODY);
+
 	saveScore(score); 
 	clearScreen(); 
 	displayEndScreen(score); 
 	refresh();
+
 	getchar();
 
 	endwin();	/* End curses mode */

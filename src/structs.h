@@ -13,7 +13,7 @@ typedef struct snakeComplete {
 	int direction;
 	int currentBodySize;
 	Coordinates head;
-	Coordinates body[SNAKE_MAXLENGTH_BODY];
+	Coordinates *body;
 } SnakeComplete;
 
 typedef struct food {
