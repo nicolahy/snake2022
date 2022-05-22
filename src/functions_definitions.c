@@ -12,6 +12,32 @@
 
 /* game board */
 
+/* allocates memory for a character matrix of size lines * columns */
+char **allocMatrixChars(unsigned int lines, unsigned int columns) {
+	int i;
+	char **matrix = malloc(lines*sizeof(char*));
+
+	/*  
+	set an matrix (array of arrays) with chars :
+	- allocate the main array (which is filled with pointers to the sub-arrays)
+	- allocate each of the sub-arrays
+	*/ 
+
+	if(matrix == NULL) {
+		fprintf(stderr,"[KO] Unable to allocate memory for matrix (1)");
+		exit(EXIT_FAILURE);
+	}
+
+	for(i = 0 ; i < lines ; ++i) {
+		matrix[i] = malloc(columns*sizeof(char));
+		if(matrix[i] == NULL) {
+			fprintf(stderr,"[KO] Unable to allocate memory for matrix (2)");
+			exit(EXIT_FAILURE);
+		}
+	}
+	return matrix;	
+}
+
 /* deletes a position based on coordinates */
 void cleanPosition(char gameBoard[LINES][COLUMNS], int x, int y) {
 	gameBoard[x][y] = EMPTY_SYMBOL;
@@ -96,6 +122,26 @@ void displayGameRules() {
 /* display the current score to the user */
 void displayScore(int score) {
 	printw("\nYou have won : %d dollar%c\n", score, score > 1 ? 's' : EMPTY_SYMBOL);
+}
+/* free the memory allocated for the characters matrix */
+void freeMatrixChars(char **matrix, unsigned int lines) {
+	if(matrix == NULL) {
+		return;
+	}
+
+	/* free :
+	- first the sub-tables 
+	- then the main table 
+	*/
+
+	int i;
+
+	for(i = 0; i < lines; ++i) {
+		if(matrix[i] != NULL) {
+			free(matrix[i]);
+		}
+	}
+	free(matrix);
 }
 
 /* generates random number in range [lower, upper] */
@@ -259,6 +305,5 @@ void saveScore(int score) {
   }
   fclose(file);
 }
-
 
 #endif

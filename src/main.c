@@ -15,16 +15,16 @@ int main(int argc,char *argv[]) {
 	raw(); /* Line buffering disabled	*/
 	keypad(stdscr, TRUE);	/* We get F1, F2 etc.. */
 	cbreak();
-	noecho();	/* Don't echo() while we do getch */
-  nodelay(stdscr, TRUE);
+	noecho(); /* Don't echo() while we do getch */
+	nodelay(stdscr, TRUE);
 
-  clearScreen();
+	clearScreen();
 	displayGameRules();
 
 	refresh(); /* Print it on to the real screen */
 	getchar();
 
-	char gameBoard[LINES][COLUMNS];
+	char **gameBoard = allocMatrixChars(LINES,COLUMNS);
 	int score = 0, speed = SPEED_START;
 	bool isFinished = false;
 

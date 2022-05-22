@@ -2,12 +2,14 @@
 #define _FUNCTIONS_PROTOTYPES_H
 
 /* game board */
+char **allocMatrixChars(unsigned int, unsigned int);
 void cleanPosition(char [LINES][COLUMNS], int, int);
 void clearScreen();
 void displayEndScreen(int score);
 void displayGameBoard(char [LINES][COLUMNS], SnakeComplete*, Food*);
 void displayGameRules();
 void displayScore(int);
+void freeMatrixChars(char**, unsigned int);
 int getRandomInt(int, int);
 void setDelay(unsigned int);
 void setGameBoardBorders(char [LINES][COLUMNS]);
