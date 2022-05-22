@@ -2,27 +2,27 @@
 #define _FUNCTIONS_PROTOTYPES_H
 
 /* game board */
-char **allocMatrixChars(unsigned int, unsigned int);
-void cleanPosition(char [LINES][COLUMNS], int, int);
+char**allocMatrixChars(unsigned int, unsigned int);
+void cleanPosition(char**, int, int);
 void clearScreen();
 void displayEndScreen(int score);
-void displayGameBoard(char [LINES][COLUMNS], SnakeComplete*, Food*);
+void displayGameBoard(char**, SnakeComplete*, Food*);
 void displayGameRules();
 void displayScore(int);
 void freeMatrixChars(char**, unsigned int);
 int getRandomInt(int, int);
 void setDelay(unsigned int);
-void setGameBoardBorders(char [LINES][COLUMNS]);
+void setGameBoardBorders(char**);
 
 /* snake */
 void addSnakeBodyItem(SnakeComplete*);
-void moveSnake(char [LINES][COLUMNS], SnakeComplete*, bool*);
-void goTo(char [LINES][COLUMNS], SnakeComplete*, int);
+void moveSnake(char**, SnakeComplete*, bool*);
+void goTo(char**, SnakeComplete*, int);
 void updateSnakeBody(SnakeComplete*);
 
 /* food */
-bool isFoodEaten(char [LINES][COLUMNS], Food*);
-void setFood(char [LINES][COLUMNS], Food*);
+bool isFoodEaten(char**, Food*);
+void setFood(char**, Food*);
 
 /* speed */
 void displaySpeed(unsigned int);

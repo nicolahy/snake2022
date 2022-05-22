@@ -39,7 +39,7 @@ char **allocMatrixChars(unsigned int lines, unsigned int columns) {
 }
 
 /* deletes a position based on coordinates */
-void cleanPosition(char gameBoard[LINES][COLUMNS], int x, int y) {
+void cleanPosition(char **gameBoard, int x, int y) {
 	gameBoard[x][y] = EMPTY_SYMBOL;
 }
 
@@ -75,7 +75,7 @@ void displayEndScreen(int score) {
 }
 
 /* display all the elements of the game board */
-void displayGameBoard(char gameBoard[LINES][COLUMNS], SnakeComplete *mySnake, Food *food) {
+void displayGameBoard(char **gameBoard, SnakeComplete *mySnake, Food *food) {
 
 	int i, j;
 
@@ -158,7 +158,7 @@ void setDelay(unsigned int milliseconds) {
 }
 
 /* delimits the game board */
-void setGameBoardBorders(char gameBoard[LINES][COLUMNS]) {
+void setGameBoardBorders(char **gameBoard) {
 
 	int i,j;
 
@@ -199,7 +199,7 @@ void addSnakeBodyItem(SnakeComplete *mySnake) {
 }
 
 /* determines the new direction of the snake according to the key pressed */
-void moveSnake(char gameBoard[LINES][COLUMNS], SnakeComplete *mySnake, bool *isFinished) {
+void moveSnake(char **gameBoard, SnakeComplete *mySnake, bool *isFinished) {
 	mySnake->head.previousX = mySnake->head.x;
 	mySnake->head.previousY = mySnake->head.y;
 
@@ -216,7 +216,7 @@ void moveSnake(char gameBoard[LINES][COLUMNS], SnakeComplete *mySnake, bool *isF
 }
 
 /* recalculates the coordinates of the snake's head according to its direction */
-void goTo(char gameBoard[LINES][COLUMNS], SnakeComplete *mySnake, int where) {
+void goTo(char **gameBoard, SnakeComplete *mySnake, int where) {
 	switch(where) {
 		case MOVE_RIGHT: 
 			mySnake->head.previousY = mySnake->head.y;
@@ -265,11 +265,11 @@ void updateSnakeBody(SnakeComplete *mySnake) {
 /* food */
 
 /* detect when the food was eaten */
-bool isFoodEaten(char gameBoard[LINES][COLUMNS], Food *food) {
+bool isFoodEaten(char **gameBoard, Food *food) {
 	return gameBoard[food->coordinates.x][food->coordinates.y] != food->coordinates.symbol;
 }
 /* set food coordinates */
-void setFood(char gameBoard[LINES][COLUMNS], Food *food) {
+void setFood(char **gameBoard, Food *food) {
 	food->coordinates.x = getRandomInt(1, LINES-1);
 	food->coordinates.y = getRandomInt(1, COLUMNS-1);
 	food->isActive = gameBoard[food->coordinates.x][food->coordinates.y] == EMPTY_SYMBOL;
