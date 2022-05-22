@@ -41,7 +41,7 @@ foo@bla:~$ sudo apt-get install libncurses5-dev libncursesw5-dev
 Don't forget to add the suffix **-lncurses** for the compilation (see the project Makefile).
 
 ## Memory leaks
-I used Valgrind. YOu need to install it.
+I used Valgrind. You need to install it.
 ```
 foo@bla:~$ sudo apt-get install valgrind
 ```
