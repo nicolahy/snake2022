@@ -40,4 +40,19 @@ foo@bla:~$ sudo apt-get install libncurses5-dev libncursesw5-dev
 ```
 Don't forget to add the suffix **-lncurses** for the compilation (see the project Makefile).
 
+## Memory leaks
+I used Valgrind. YOu need to install it.
+```
+foo@bla:~$ sudo apt-get install valgrind
+```
+In my project, the ncurses library is responsible for the warnings remaining in the leak summary (see below), displayed at the end of the program. Otherwise the memory allocated via malloc is deallocated at the end of the program.
+```console
+==8134== LEAK SUMMARY:
+==8134==    definitely lost: 0 bytes in 0 blocks
+==8134==    indirectly lost: 0 bytes in 0 blocks
+==8134==    possibly lost: 201 bytes in 3 blocks
+==8134==    still reachable: 53,752 bytes in 384 blocks
+==8134==    suppressed: 0 bytes in 0 blocks
+```
+
 ## Here a GIF
