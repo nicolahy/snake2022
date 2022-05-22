@@ -41,7 +41,7 @@ foo@bla:~$ sudo apt-get install libncurses5-dev libncursesw5-dev
 Don't forget to add the suffix **-lncurses** for the compilation (see the project Makefile).
 
 ## Memory leaks
-I used Valgrind. You need to install it.
+I used Valgrind. Maybe you will need to install it.
 ```
 foo@bla:~$ sudo apt-get install valgrind
 ```
@@ -55,4 +55,5 @@ In my project, the ncurses library is responsible for the warnings remaining in 
 ==8134==    suppressed: 0 bytes in 0 blocks
 ```
 
-## Here a GIF
+## A nice gif to finish
+![](https://github.com/niikkos/snake2022/blob/main/doc/snake2022.gif)
