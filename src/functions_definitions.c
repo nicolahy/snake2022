@@ -296,7 +296,8 @@ void setFood(char **gameBoard, Food *food) {
 
 /* display the current game speed to the user */
 void displaySpeed(unsigned int speed) {
-	printw("\nYour speed : %0.01f cases/seconde\n", 1000.00 * 1 / speed); /* cross product to get nbCases/second */
+	float currentSpeed = 1000.00 * 1 / speed; /* cross product to get the number of squares per second */
+	printw("\nYour speed : %0.01f square%c/second\n", currentSpeed, currentSpeed > 1 ? 's' : EMPTY_SYMBOL);
 }
 
 /* improves game speed by reducing pause times */

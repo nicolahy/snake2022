@@ -7,6 +7,7 @@ Resurrection of a student project done in my first year of graduate studies in c
 - The project must be realized in console mode.
 - The unit of measurement is the "square": a finite plane of squares constitutes the game board, whose edges can be crossed, and where a snake starts in its middle.
 - The snake, which follows the path taken by its head, moves straight ahead at a fixed speed (which increases as it eats the food).
+- The food is represented by what you want, I chose dollar💲.
 - It will be able to turn according to the good will of the user who will press the corresponding keys of the keyboard.
 - As for his "food" that will allow him to grow, it must occupy only one square and there must always be at least one available in the game board.
 - When the snake's head is on a square containing food, the food disappears and an additional tail section of one square is added to the snake.
